@@ -1,6 +1,6 @@
 param ([switch]$System, [switch]$Disks, [switch]$Network)
 
-$line = "_" * 1	40
+$line = "_" * 140
 $seperator = "-" * 140
 
 if ($System) {
