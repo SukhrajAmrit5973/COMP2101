@@ -1,9 +1,4 @@
-'$env:path += ";$home/documents/github/comp2101/powershell"' >> $profile
-New-Alias np notepad.exe
-
 function welcome{
-# Lab 2 COMP2101 welcome script for profile
-#
 
 write-output "Welcome to planet $env:computername Overlord $env:username"
 $now = get-date -format 'HH:MM tt on dddd'
@@ -28,7 +23,7 @@ function get-mydisks {
 
 
 #### Ip config file
- ### function sysIPCInfo will fetch Network configuration detail for my vmware..
+### function sysIPCInfo will fetch Network configuration detail for my vmware..
 function sysIPCInfo{
 $Fetched = Get-CimInstance Win32_NetworkAdapterConfiguration | Where-Object {$_.IPEnabled}
 $outputdata = foreach ($Fetch in $Fetched ) {
@@ -48,8 +43,6 @@ $outputdata | Format-Table -AutoSize
 }
 
 #sysIPCInfo
-
-
 ##system report file
 ### function sysHardwareInfo will fetch Hardware detail for my vmware..
 function sysHardwareInfo{
@@ -158,48 +151,3 @@ function sysVCInfo {
     }
     $outputdata | Format-List
 }
-
-
-
-### This will fetch all the functions and displays on powershell
-# calling all the function and display outputdata
-Write-Output " 	"
-Write-Output "*******************************************************************************************"
-Write-Output "*******************************************************************************************"
-Write-Output "                             `% System Information Report `%                         "
-Write-Output "                              *****************************                           " 
-Write-Output "*******************************************************************************************"
-Write-Output "*******************************************************************************************"
-
-
-Write-Output "Systems Hardware"
-sysHardwareInfo | Format-List
-
-Write-Output "Systems Oprating System"
-sysoperating | Format-List
-
-
-Write-Output "Systems Processor"
-sysprocessor | Format-List
-
-
-Write-Output "Systems RAM Memory"
-sysmemInfo
-
-Write-Output "Systems Disk Drive"
-sysdiskinfo | Format-Table -AutoSize
-
-
-Write-Output "Systems IP Configuration"
-##./ipConfig.ps1
-sysIPCInfo
-
-
-Write-Output "Systems Video Controller"
-sysVCInfo | Format-List
-
-
-
-Write-Output "*******************************************************************************************"
-Write-Output "*******************************************************************************************"
-
